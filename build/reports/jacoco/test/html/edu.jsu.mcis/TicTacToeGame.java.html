@@ -32,131 +32,140 @@ public class TicTacToeGame extends JFrame implements ActionListener{
 	
 	private void checkForWin()
 	{
-<span class="nc" id="L35">		JOptionPane p = new JOptionPane();</span>
-<span class="nc" id="L36">		char mark = 'a';</span>
-<span class="nc" id="L37">		String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L38" title="All 4 branches missed.">		if(game.isTheBoardFull() &amp;&amp; !game.isThereAWinner())</span>
+<span class="nc" id="L35">		char mark = 'a';</span>
+<span class="nc" id="L36">		String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L37" title="All 4 branches missed.">		if(game.isTheBoardFull() &amp;&amp; !game.isThereAWinner())</span>
 		{
-<span class="nc" id="L40">			p.showMessageDialog(this, &quot;The winner is TIE&quot;, &quot;Game Over&quot;, JOptionPane.PLAIN_MESSAGE);</span>
+<span class="nc" id="L39">			new Thread(new Runnable(){</span>
+				public void run(){
+<span class="nc" id="L41">			JOptionPane.showMessageDialog(null, &quot;The winner is TIE&quot;, &quot;Game Over&quot;, JOptionPane.PLAIN_MESSAGE);</span>
+			
+<span class="nc" id="L43">		}}).start();</span>
 		}
-<span class="nc bnc" id="L42" title="All 4 branches missed.">		else if(game.isThereAWinner() &amp;&amp; game.getCurrentMark(mark, currentMark).equals(&quot;X&quot;))</span>
+<span class="nc bnc" id="L45" title="All 4 branches missed.">		else if(game.isThereAWinner() &amp;&amp; game.getCurrentMark(mark, currentMark).equals(&quot;X&quot;))</span>
 		{
-<span class="nc" id="L44">			p.showMessageDialog(this, &quot;The winner is X&quot;, &quot;Game Over&quot;, JOptionPane.PLAIN_MESSAGE);</span>
+<span class="nc" id="L47">			new Thread(new Runnable(){</span>
+				public void run(){
+<span class="nc" id="L49">			JOptionPane.showMessageDialog(null, &quot;The winner is X&quot;, &quot;Game Over&quot;, JOptionPane.PLAIN_MESSAGE);</span>
+<span class="nc" id="L50">		}}).start();</span>
 		}
-<span class="nc bnc" id="L46" title="All 4 branches missed.">		else if(game.isThereAWinner() &amp;&amp; game.getCurrentMark(mark, currentMark).equals(&quot;O&quot;))</span>
+<span class="nc bnc" id="L52" title="All 4 branches missed.">		else if(game.isThereAWinner() &amp;&amp; game.getCurrentMark(mark, currentMark).equals(&quot;O&quot;))</span>
 		{
-<span class="nc" id="L48">			p.showMessageDialog(this, &quot;The winner is O&quot;, &quot;Game Over&quot;, JOptionPane.PLAIN_MESSAGE);</span>
+<span class="nc" id="L54">			new Thread(new Runnable(){</span>
+				public void run(){
+<span class="nc" id="L56">			JOptionPane.showMessageDialog(null, &quot;The winner is O&quot;, &quot;Game Over&quot;, JOptionPane.PLAIN_MESSAGE);</span>
+<span class="nc" id="L57">			}}).start();</span>
 		}
-<span class="nc" id="L50">		else game.changePlayer();</span>
-<span class="nc" id="L51">	}</span>
+<span class="nc" id="L59">		else game.changePlayer();</span>
+<span class="nc" id="L60">	}</span>
 	
 	public void actionPerformed(ActionEvent event)
 	{
-<span class="nc" id="L55">		event.getSource();</span>
-<span class="nc bnc" id="L56" title="All 2 branches missed.">		if(event.getSource() == location[0][0])</span>
+<span class="nc" id="L64">		event.getSource();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		if(event.getSource() == location[0][0])</span>
 		{
-<span class="nc" id="L58">			char mark = 'a';</span>
-<span class="nc" id="L59">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L60" title="All 2 branches missed.">			if(game.isSpotAvailable(0,0)){</span>
-<span class="nc" id="L61">				game.placeMark(0,0);</span>
-<span class="nc" id="L62">				location[0][0].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L67">			char mark = 'a';</span>
+<span class="nc" id="L68">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">			if(game.isSpotAvailable(0,0)){</span>
+<span class="nc" id="L70">				game.placeMark(0,0);</span>
+<span class="nc" id="L71">				location[0][0].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L64">			checkForWin();</span>
+<span class="nc" id="L73">			checkForWin();</span>
 			
-<span class="nc" id="L66">		}</span>
-<span class="nc bnc" id="L67" title="All 2 branches missed.">		else if(event.getSource() == location[0][1])</span>
+<span class="nc" id="L75">		}</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		else if(event.getSource() == location[0][1])</span>
 		{
-<span class="nc" id="L69">			char mark = 'a';</span>
-<span class="nc" id="L70">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">			if(game.isSpotAvailable(0,1)){</span>
-<span class="nc" id="L72">				game.placeMark(0,1);</span>
-<span class="nc" id="L73">				location[0][1].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L78">			char mark = 'a';</span>
+<span class="nc" id="L79">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">			if(game.isSpotAvailable(0,1)){</span>
+<span class="nc" id="L81">				game.placeMark(0,1);</span>
+<span class="nc" id="L82">				location[0][1].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L75">			checkForWin();</span>
-<span class="nc" id="L76">		}</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">		else if(event.getSource() == location[0][2])</span>
+<span class="nc" id="L84">			checkForWin();</span>
+<span class="nc" id="L85">		}</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		else if(event.getSource() == location[0][2])</span>
 		{
-<span class="nc" id="L79">			char mark = 'a';</span>
-<span class="nc" id="L80">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">			if(game.isSpotAvailable(0,2)){ </span>
-<span class="nc" id="L82">				game.placeMark(0,2);</span>
-<span class="nc" id="L83">				location[0][2].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L88">			char mark = 'a';</span>
+<span class="nc" id="L89">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">			if(game.isSpotAvailable(0,2)){ </span>
+<span class="nc" id="L91">				game.placeMark(0,2);</span>
+<span class="nc" id="L92">				location[0][2].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L85">			checkForWin();</span>
-<span class="nc" id="L86">		}</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">		else if(event.getSource() == location[1][0])</span>
+<span class="nc" id="L94">			checkForWin();</span>
+<span class="nc" id="L95">		}</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		else if(event.getSource() == location[1][0])</span>
 		{
-<span class="nc" id="L89">			char mark = 'a';</span>
-<span class="nc" id="L90">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L91" title="All 2 branches missed.">			if(game.isSpotAvailable(1,0))</span>
+<span class="nc" id="L98">			char mark = 'a';</span>
+<span class="nc" id="L99">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">			if(game.isSpotAvailable(1,0))</span>
 			{
-<span class="nc" id="L93">				game.placeMark(1,0);</span>
-<span class="nc" id="L94">				location[1][0].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L102">				game.placeMark(1,0);</span>
+<span class="nc" id="L103">				location[1][0].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L96">			checkForWin();</span>
-<span class="nc" id="L97">		}</span>
-<span class="nc bnc" id="L98" title="All 2 branches missed.">		else if(event.getSource() == location[1][1])</span>
+<span class="nc" id="L105">			checkForWin();</span>
+<span class="nc" id="L106">		}</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">		else if(event.getSource() == location[1][1])</span>
 		{
-<span class="nc" id="L100">			char mark = 'a';</span>
-<span class="nc" id="L101">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L102" title="All 2 branches missed.">			if(game.isSpotAvailable(1,1)) </span>
+<span class="nc" id="L109">			char mark = 'a';</span>
+<span class="nc" id="L110">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">			if(game.isSpotAvailable(1,1)) </span>
 			{
-<span class="nc" id="L104">				game.placeMark(1,1);</span>
-<span class="nc" id="L105">				location[1][1].setText(game.getCurrentMark(mark,currentMark));</span>
+<span class="nc" id="L113">				game.placeMark(1,1);</span>
+<span class="nc" id="L114">				location[1][1].setText(game.getCurrentMark(mark,currentMark));</span>
 			}
-<span class="nc" id="L107">			checkForWin();</span>
-<span class="nc" id="L108">		}</span>
-<span class="nc bnc" id="L109" title="All 2 branches missed.">		else if(event.getSource() == location[1][2])</span>
+<span class="nc" id="L116">			checkForWin();</span>
+<span class="nc" id="L117">		}</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">		else if(event.getSource() == location[1][2])</span>
 		{
-<span class="nc" id="L111">			char mark = 'a';</span>
-<span class="nc" id="L112">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L113" title="All 2 branches missed.">			if(game.isSpotAvailable(1,2)){</span>
-<span class="nc" id="L114">				game.placeMark(1,2);</span>
-<span class="nc" id="L115">				location[1][2].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L120">			char mark = 'a';</span>
+<span class="nc" id="L121">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">			if(game.isSpotAvailable(1,2)){</span>
+<span class="nc" id="L123">				game.placeMark(1,2);</span>
+<span class="nc" id="L124">				location[1][2].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L117">			checkForWin();</span>
-<span class="nc" id="L118">		}</span>
-<span class="nc bnc" id="L119" title="All 2 branches missed.">		else if(event.getSource() == location[2][0])</span>
+<span class="nc" id="L126">			checkForWin();</span>
+<span class="nc" id="L127">		}</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">		else if(event.getSource() == location[2][0])</span>
 		{
-<span class="nc" id="L121">			char mark = 'a';</span>
-<span class="nc" id="L122">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L123" title="All 2 branches missed.">			if(game.isSpotAvailable(2,0)){</span>
-<span class="nc" id="L124">				game.placeMark(2,0);</span>
-<span class="nc" id="L125">				location[2][0].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L130">			char mark = 'a';</span>
+<span class="nc" id="L131">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			if(game.isSpotAvailable(2,0)){</span>
+<span class="nc" id="L133">				game.placeMark(2,0);</span>
+<span class="nc" id="L134">				location[2][0].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L127">			checkForWin();</span>
-<span class="nc" id="L128">		}</span>
-<span class="nc bnc" id="L129" title="All 2 branches missed.">		else if(event.getSource() == location[2][1])</span>
+<span class="nc" id="L136">			checkForWin();</span>
+<span class="nc" id="L137">		}</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">		else if(event.getSource() == location[2][1])</span>
 		{
-<span class="nc" id="L131">			char mark = 'a';</span>
-<span class="nc" id="L132">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L133" title="All 2 branches missed.">			if(game.isSpotAvailable(2,1)){</span>
-<span class="nc" id="L134">				game.placeMark(2,1);</span>
-<span class="nc" id="L135">				location[2][1].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L140">			char mark = 'a';</span>
+<span class="nc" id="L141">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">			if(game.isSpotAvailable(2,1)){</span>
+<span class="nc" id="L143">				game.placeMark(2,1);</span>
+<span class="nc" id="L144">				location[2][1].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L137">			checkForWin();</span>
-<span class="nc" id="L138">		}</span>
-<span class="nc bnc" id="L139" title="All 2 branches missed.">		else if(event.getSource() == location[2][2])</span>
+<span class="nc" id="L146">			checkForWin();</span>
+<span class="nc" id="L147">		}</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">		else if(event.getSource() == location[2][2])</span>
 		{
-<span class="nc" id="L141">			char mark = 'a';</span>
-<span class="nc" id="L142">			String currentMark = &quot;a&quot;;</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">			if(game.isSpotAvailable(2,2)){</span>
-<span class="nc" id="L144">				game.placeMark(2,2);</span>
-<span class="nc" id="L145">				location[2][2].setText(game.getCurrentMark(mark, currentMark));</span>
+<span class="nc" id="L150">			char mark = 'a';</span>
+<span class="nc" id="L151">			String currentMark = &quot;a&quot;;</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">			if(game.isSpotAvailable(2,2)){</span>
+<span class="nc" id="L153">				game.placeMark(2,2);</span>
+<span class="nc" id="L154">				location[2][2].setText(game.getCurrentMark(mark, currentMark));</span>
 			}
-<span class="nc" id="L147">			checkForWin();</span>
+<span class="nc" id="L156">			checkForWin();</span>
 		}
-<span class="nc" id="L149">	}</span>
+<span class="nc" id="L158">	}</span>
     
     public static void main(String args[]) {
-<span class="nc" id="L152">		TicTacToe newGame = new TicTacToe();</span>
-<span class="nc" id="L153">       newGame.initializeBoard();</span>
-<span class="nc" id="L154">	   TicTacToeGame newBoard = new TicTacToeGame();</span>
-<span class="nc" id="L155">	   newBoard.pack();</span>
-<span class="nc" id="L156">	   newBoard.setTitle(&quot;Tic Tac Toe&quot;);</span>
-<span class="nc" id="L157">	   newBoard.setVisible(true);</span>
+<span class="nc" id="L161">		TicTacToe newGame = new TicTacToe();</span>
+<span class="nc" id="L162">       newGame.initializeBoard();</span>
+<span class="nc" id="L163">	   TicTacToeGame newBoard = new TicTacToeGame();</span>
+<span class="nc" id="L164">	   newBoard.pack();</span>
+<span class="nc" id="L165">	   newBoard.setTitle(&quot;Tic Tac Toe&quot;);</span>
+<span class="nc" id="L166">	   newBoard.setVisible(true);</span>
        
-<span class="nc" id="L159">    }</span>
+<span class="nc" id="L168">    }</span>
 
     
 }

@@ -32,20 +32,29 @@ public class TicTacToeGame extends JFrame implements ActionListener{
 	
 	private void checkForWin()
 	{
-		JOptionPane p = new JOptionPane();
 		char mark = 'a';
 		String currentMark = "a";
 		if(game.isTheBoardFull() && !game.isThereAWinner())
 		{
-			p.showMessageDialog(this, "The winner is TIE", "Game Over", JOptionPane.PLAIN_MESSAGE);
+			new Thread(new Runnable(){
+				public void run(){
+			JOptionPane.showMessageDialog(null, "The winner is TIE", "Game Over", JOptionPane.PLAIN_MESSAGE);
+			
+		}}).start();
 		}
 		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
 		{
-			p.showMessageDialog(this, "The winner is X", "Game Over", JOptionPane.PLAIN_MESSAGE);
+			new Thread(new Runnable(){
+				public void run(){
+			JOptionPane.showMessageDialog(null, "The winner is X", "Game Over", JOptionPane.PLAIN_MESSAGE);
+		}}).start();
 		}
 		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
 		{
-			p.showMessageDialog(this, "The winner is O", "Game Over", JOptionPane.PLAIN_MESSAGE);
+			new Thread(new Runnable(){
+				public void run(){
+			JOptionPane.showMessageDialog(null, "The winner is O", "Game Over", JOptionPane.PLAIN_MESSAGE);
+			}}).start();
 		}
 		else game.changePlayer();
 	}
