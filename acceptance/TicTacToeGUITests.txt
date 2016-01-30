@@ -9,6 +9,7 @@ Start New Game
 Mark Location   [Arguments]     ${row}      ${col}
     ${component}=   Catenate    SEPARATOR=  Location    ${row}  ${col}
     Click On Component  ${component}
+	Sleep   1
 
 Check Location  [Arguments]     ${row}  ${col}  ${mark}
     ${component}=   Catenate    SEPARATOR=  Location    ${row}  ${col}

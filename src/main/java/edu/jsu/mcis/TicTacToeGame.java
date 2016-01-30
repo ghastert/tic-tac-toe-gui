@@ -34,126 +34,48 @@ public class TicTacToeGame extends JFrame implements ActionListener{
 	{
 		char mark = 'a';
 		String currentMark = "a";
+		final String s;
 		if(game.isTheBoardFull() && !game.isThereAWinner())
 		{
-			new Thread(new Runnable(){
-				public void run(){
-			JOptionPane.showMessageDialog(null, "The winner is TIE", "Game Over", JOptionPane.PLAIN_MESSAGE);
-			
-		}}).start();
+			s = "TIE";			
 		}
 		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
 		{
-			new Thread(new Runnable(){
-				public void run(){
-			JOptionPane.showMessageDialog(null, "The winner is X", "Game Over", JOptionPane.PLAIN_MESSAGE);
-		}}).start();
+			s = "X";
 		}
 		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
 		{
+			s = "O";
+		}
+		else{
+			s = "";
+		}
+		if(s.length() > 0){
 			new Thread(new Runnable(){
 				public void run(){
-			JOptionPane.showMessageDialog(null, "The winner is O", "Game Over", JOptionPane.PLAIN_MESSAGE);
-			}}).start();
+					JOptionPane.showMessageDialog(null, "The winner is " + s, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+				}
+		}).start();
 		}
-		else game.changePlayer();
 	}
 	
 	public void actionPerformed(ActionEvent event)
 	{
-		event.getSource();
-		if(event.getSource() == location[0][0])
+		JButton b = (JButton)event.getSource();
+		String loc = b.getName().substring(8);
+		int row = Integer.parseInt(loc.substring(0, 1));
+		int col = Integer.parseInt(loc.substring(1, 2));
+		char mark = 'a';
+		String currentMark = "a";
+		if(game.isSpotAvailable(row,col))
 		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(0,0)){
-				game.placeMark(0,0);
-				location[0][0].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-			
+			game.placeMark(row,col);
+			b.setText(game.getCurrentMark(mark, currentMark));
 		}
-		else if(event.getSource() == location[0][1])
+		checkForWin();
+		if(!game.isTheBoardFull() || !game.isThereAWinner())
 		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(0,1)){
-				game.placeMark(0,1);
-				location[0][1].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[0][2])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(0,2)){ 
-				game.placeMark(0,2);
-				location[0][2].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[1][0])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(1,0))
-			{
-				game.placeMark(1,0);
-				location[1][0].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[1][1])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(1,1)) 
-			{
-				game.placeMark(1,1);
-				location[1][1].setText(game.getCurrentMark(mark,currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[1][2])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(1,2)){
-				game.placeMark(1,2);
-				location[1][2].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[2][0])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(2,0)){
-				game.placeMark(2,0);
-				location[2][0].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[2][1])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(2,1)){
-				game.placeMark(2,1);
-				location[2][1].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
-		}
-		else if(event.getSource() == location[2][2])
-		{
-			char mark = 'a';
-			String currentMark = "a";
-			if(game.isSpotAvailable(2,2)){
-				game.placeMark(2,2);
-				location[2][2].setText(game.getCurrentMark(mark, currentMark));
-			}
-			checkForWin();
+			game.changePlayer();
 		}
 	}
     
